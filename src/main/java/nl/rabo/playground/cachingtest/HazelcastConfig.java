@@ -47,7 +47,7 @@ public class HazelcastConfig {
             hazelcastInstance = HazelcastClient.newHazelcastClient(config);
             log.info("successfully connected to cluster {}.", hazelcastGroup);
         } catch (Exception e) {
-            log.warn("Not able to connect to cluster {}.", hazelcastGroup);
+            log.error("Not able to connect to cluster {}.", hazelcastGroup);
         }
 
         return hazelcastInstance;
