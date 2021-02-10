@@ -14,6 +14,11 @@
 	<name>caching-test</name>
 	<description>Demo project for Spring Boot</description>
 
+	<scm>
+		<url>https://github.com/abdulhadi1986/caching-test.git</url>
+		<connection>scm:git:https://github.com/abdulhadi1986/caching-test.git</connection>
+		<tag>HEAD</tag>
+	</scm>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
@@ -43,13 +48,30 @@
 
 		<dependency>
 			<groupId>com.hazelcast</groupId>
+			<artifactId>hazelcast</artifactId>
+			<version>3.12.11</version>
+		</dependency>
+		<dependency>
+			<groupId>com.hazelcast</groupId>
 			<artifactId>hazelcast-client</artifactId>
-			<version>3.12.4</version>
+			<version>3.12.11</version>
+			<exclusions>
+				<exclusion>
+					<groupId>com.hazelcast</groupId>
+					<artifactId>hazelcast</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>com.hazelcast</groupId>
 			<artifactId>hazelcast-spring</artifactId>
-			<version>3.12.4</version>
+			<version>3.12.11</version>
+			<exclusions>
+				<exclusion>
+					<groupId>com.hazelcast</groupId>
+					<artifactId>hazelcast</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 	</dependencies>
 
@@ -69,5 +91,13 @@
 			</plugin>
 		</plugins>
 	</build>
-
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>com.hazelcast</groupId>
+				<artifactId>hazelcast</artifactId>
+				<version>3.12.11</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 </project>

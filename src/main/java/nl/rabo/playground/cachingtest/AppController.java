@@ -1,8 +1,11 @@
 package nl.rabo.playground.cachingtest;
 
+import nl.rabo.playground.cachingtest.model.Employee;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,13 +23,13 @@ public class AppController {
     private HazelcastDataService hazelcastDataService;
 
     @GetMapping("/save")
-    public ResponseEntity<String> saveDataToHazelCast(@RequestParam String key, @RequestParam String val) {
+    public ResponseEntity<String> saveDataToHazelCast(@RequestBody Employee employee) {
 
-        return ResponseEntity.ok(hazelcastDataService.saveToCache("eligibility-cache", key, val));
+        return ResponseEntity.ok(hazelcastDataService.saveToCache("eligibility-cache", employee));
     }
 
     @GetMapping("/get")
-    public ResponseEntity<String> getDateFromHazelCast(@RequestParam String key) {
-        return ResponseEntity.ok(hazelcastDataService.getFromCache("eligibility-cache", key));
+    public ResponseEntity<Employee> getDateFromHazelCast(@RequestBody Employee employee) {
+        return ResponseEntity.ok(hazelcastDataService.getFromCache("eligibility-cache", employee));
     }
 }

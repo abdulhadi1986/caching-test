@@ -3,19 +3,24 @@ package nl.rabo.playground.cachingtest;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cache.CacheManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
+
 import com.hazelcast.config.GroupConfig;
 import com.hazelcast.client.HazelcastClient;
 import com.hazelcast.client.config.ClientConfig;
 import com.hazelcast.core.HazelcastInstance;
 import com.hazelcast.security.UsernamePasswordCredentials;
+import com.hazelcast.spring.cache.HazelcastCacheManager;
 
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Data
+@Profile("!dev")
 @Configuration
 public class HazelcastConfig {
 
@@ -51,5 +56,10 @@ public class HazelcastConfig {
         }
 
         return hazelcastInstance;
+    }
+
+    @Bean
+    public CacheManager cacheManager(HazelcastInstance instance) {
+        return new HazelcastCacheManager(instance);
     }
 }
