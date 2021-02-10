@@ -6,6 +6,7 @@ import static org.mockito.Mockito.when;
 import java.util.concurrent.ExecutionException;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -17,6 +18,7 @@ import org.springframework.test.context.ContextConfiguration;
 
 import lombok.AllArgsConstructor;
 
+@Disabled
 //@ContextConfiguration(classes = {CachingService.class, HazelcastDataService.class, HazelcastConfig.class})
 @ExtendWith(MockitoExtension.class)
 public class CachingServiceTest {

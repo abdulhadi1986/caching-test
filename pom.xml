@@ -9,14 +9,14 @@
 	</parent>
 	<groupId>nl.rabo.playground</groupId>
 	<artifactId>caching-test</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>caching-test</name>
 	<description>Demo project for Spring Boot</description>
 
 	<scm>
 		<url>https://github.com/abdulhadi1986/caching-test.git</url>
 		<connection>scm:git:https://github.com/abdulhadi1986/caching-test.git</connection>
-		<tag>${project.version}</tag>
+		<tag>caching-test-0.0.1</tag>
 	</scm>
 	<properties>
 		<java.version>11</java.version>
